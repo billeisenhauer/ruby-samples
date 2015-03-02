@@ -12,7 +12,7 @@ class Card
   end
   
   def ==(other)
-    (self.face == other.face) && (self.suit == other.suit)
+    (face == other.face) && (suit == other.suit)
   end
   
 end

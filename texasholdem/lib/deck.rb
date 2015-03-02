@@ -1,21 +1,16 @@
 class Deck
   
-  FACES = %w(A K Q J 10 9 8 7 6 5 4 3 2 1)
-  SUITS = %w(s h c d)
-  
-  def initialize(shuffles=0, faces=FACES, suits=SUITS)
-    assemble(suits, faces)
-    shuffles.times { shuffle }
+  def initialize(cards)
+    self.cards = cards
   end
   
-  def shuffle!
+  def shuffle
     shuffled_cards = []
-    @cards.each do |card|
+    cards.each do |card|
       location = rand(shuffled_cards.size + 1)
       shuffled_cards.insert(location, card)
     end
-    @cards = shuffled_cards
-    self
+    Deck.new(shuffled_cards)
   end
   
   def deal(card_count=1)
@@ -27,20 +22,11 @@ class Deck
   end
   
   def to_s
-    @cards.join(' ')
+    cards.join(' ')
   end
   
   private
   
-    attr_reader :cards
-  
-    def assemble(suits, faces)
-      @cards = []
-      suits.each do |suit|
-        faces.each do |face|
-          @cards << Card.new(face, suit)
-        end
-      end
-    end
+    attr_accessor :cards
 
 end
