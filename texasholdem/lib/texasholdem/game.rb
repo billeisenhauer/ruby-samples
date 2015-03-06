@@ -1,15 +1,12 @@
 class Game
   
-  def initialize
+  def initialize(game_printer)
     @hands = deal_and_play_hands
-  end
-  
-  def rank
-    # TODO
+    @game_printer = game_printer
   end
   
   def to_s
-    @hands.each(&:to_s)
+    game_printer.print(@hands)
   end
   
   private
