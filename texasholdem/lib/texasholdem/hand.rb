@@ -4,8 +4,8 @@ class Hand
     @cards = cards.dup
   end
   
-  def take(card)
-    @cards << card
+  def take(card_or_cards)
+    @cards.concat Array(card_or_cards)
   end
   
   def to_s
